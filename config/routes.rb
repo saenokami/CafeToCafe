@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     get 'homes/about'
     resources :shops, only: [:new, :index, :show, :create, :edit, :update]
     resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy]
-    resources :users, only: [:mypage, :edit, :show, :update, :destroy]
+    resources :users, only: [:edit, :show, :update, :destroy] do
+      get 'mypage', on: :member 
+    end
   end
 
   root to: "public/homes#top"
